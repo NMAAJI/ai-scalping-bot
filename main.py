@@ -34,7 +34,13 @@ from web.react_dashboard import REACT_DASHBOARD
 from utils.helpers import setup_logging, ensure_directories_exist
 
 # Configure logging
-setup_logging(LOG_LEVEL, LOG_FORMAT)
+try:
+    setup_logging(LOG_LEVEL, LOG_FORMAT)
+except Exception as e:
+    # Fallback for read-only filesystems (Vercel)
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger(__name__).warning(f"Could not setup file logging (likely read-only env): {e}")
+
 logger = logging.getLogger(__name__)
 
 # Initialize Flask app with static files configuration
