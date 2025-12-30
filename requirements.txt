@@ -1,0 +1,9 @@
+python-binance==1.0.17
+python-dotenv==1.0.0
+google-generativeai==0.3.0
+flask==3.0.0
+flask-cors==4.0.0
+requests==2.31.0
+pandas==2.2.2
+numpy==1.26.4
+ta==0.10.2
