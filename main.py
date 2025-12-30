@@ -146,7 +146,10 @@ def initialize_services() -> bool:
             logger.info("✅ Autonomous AI Trader initialized with full decision autonomy")
         
         # Create directories
-        ensure_directories_exist(['logs', 'data'])
+        try:
+            ensure_directories_exist(['logs', 'data'])
+        except Exception as e:
+            logger.warning(f"Skipping directory creation (read-only env): {e}")
         
         return True
         
